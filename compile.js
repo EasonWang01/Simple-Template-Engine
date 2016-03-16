@@ -1,8 +1,8 @@
-var tpl = '<p>Hello, my name is <%name%>. I\'m <%age%> years old.</p>',
+var tpl = '<p>Hello, my name is <%name%>. I\'m <%age%> years<%ss%> old.</p>',
     a,
     data = {
     	name:"eason",
-    	age:24
+    	age:20
     },
     str;
 
@@ -12,8 +12,9 @@ var compile = function(tpl,data){
 
 	
 	while((b =  reg.exec(tpl))!=null){
+		if(data[b[1]]!=null){//如data沒出現tpl的<%%>
 		tpl = tpl.replace(b[0],data[b[1]]);
-		
+		};
 	};
 console.log(tpl);
 };
